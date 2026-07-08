@@ -31,36 +31,85 @@ def badge_logo(prefix):
   <text x="120" y="214" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="1.5" fill="currentColor" text-anchor="middle" font-style="italic" opacity=".85">TOUS POUR L'ARBRE, L'ARBRE POUR LA VIE</text>
 </svg>'''
 
-def vine_svg():
-    return '''<svg class="intro-vine left" viewBox="0 0 120 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10 0 C40 100 -10 200 20 300 C45 380 0 460 25 560 C45 640 5 720 20 800" stroke="#3E6B4C" stroke-width="3" fill="none" opacity=".7"/>
-  <g fill="#A7C25C" opacity=".85">
-    <ellipse cx="18" cy="120" rx="10" ry="5" transform="rotate(30 18 120)"/>
-    <ellipse cx="24" cy="260" rx="12" ry="6" transform="rotate(-20 24 260)"/>
-    <ellipse cx="10" cy="420" rx="10" ry="5" transform="rotate(40 10 420)"/>
-    <ellipse cx="26" cy="600" rx="11" ry="5" transform="rotate(-15 26 600)"/>
-    <ellipse cx="14" cy="740" rx="10" ry="5" transform="rotate(25 14 740)"/>
-  </g>
-</svg>'''
+def _tree(cx, base_y, s, kind, color, opacity, delay):
+    """Un arbre stylisé (silhouette), utilisé pour composer la forêt d'intro."""
+    style = f'transform-origin:{cx}px {base_y}px; transition-delay:{delay:.2f}s; opacity:{opacity}'
+    if kind == "acacia":
+        # silhouette à couronne plate — l'arbre emblématique de la savane
+        trunk = f'<path d="M{cx} {base_y} C {cx-2*s} {base_y-14*s} {cx+3*s} {base_y-22*s} {cx} {base_y-34*s}" stroke="{color}" stroke-width="{2.6*s}" fill="none"/>'
+        canopy = (f'<ellipse cx="{cx}" cy="{base_y-38*s}" rx="{34*s}" ry="{7.5*s}" fill="{color}"/>'
+                  f'<ellipse cx="{cx-14*s}" cy="{base_y-33*s}" rx="{16*s}" ry="{5.5*s}" fill="{color}" opacity=".85"/>'
+                  f'<ellipse cx="{cx+15*s}" cy="{base_y-33*s}" rx="{15*s}" ry="{5*s}" fill="{color}" opacity=".85"/>')
+        inner = trunk + canopy
+    elif kind == "baobab":
+        trunk = f'<path d="M{cx-6*s} {base_y} C {cx-9*s} {base_y-30*s} {cx-4*s} {base_y-40*s} {cx} {base_y-46*s} C {cx+4*s} {base_y-40*s} {cx+9*s} {base_y-30*s} {cx+6*s} {base_y}z" fill="{color}"/>'
+        canopy = (f'<ellipse cx="{cx}" cy="{base_y-56*s}" rx="{20*s}" ry="{15*s}" fill="{color}" opacity=".9"/>'
+                  f'<ellipse cx="{cx-13*s}" cy="{base_y-50*s}" rx="{11*s}" ry="{9*s}" fill="{color}" opacity=".8"/>'
+                  f'<ellipse cx="{cx+14*s}" cy="{base_y-50*s}" rx="{12*s}" ry="{9*s}" fill="{color}" opacity=".8"/>')
+        inner = trunk + canopy
+    else:  # "round" — canopée arrondie, écho du logo
+        trunk = f'<rect x="{cx-2*s}" y="{base_y-20*s}" width="{4*s}" height="{20*s}" fill="{color}"/>'
+        canopy = (f'<ellipse cx="{cx}" cy="{base_y-42*s}" rx="{16*s}" ry="{20*s}" fill="{color}"/>'
+                  f'<ellipse cx="{cx-10*s}" cy="{base_y-30*s}" rx="{11*s}" ry="{13*s}" fill="{color}" opacity=".9"/>'
+                  f'<ellipse cx="{cx+10*s}" cy="{base_y-30*s}" rx="{11*s}" ry="{13*s}" fill="{color}" opacity=".9"/>')
+        inner = trunk + canopy
+    return f'<g class="tree" style="{style}">{inner}</g>'
 
-def vine_svg_right():
-    return '''<svg class="intro-vine right" viewBox="0 0 120 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10 0 C40 100 -10 200 20 300 C45 380 0 460 25 560 C45 640 5 720 20 800" stroke="#3E6B4C" stroke-width="3" fill="none" opacity=".7"/>
-  <g fill="#A7C25C" opacity=".85">
-    <ellipse cx="18" cy="150" rx="10" ry="5" transform="rotate(-30 18 150)"/>
-    <ellipse cx="24" cy="300" rx="12" ry="6" transform="rotate(20 24 300)"/>
-    <ellipse cx="10" cy="460" rx="10" ry="5" transform="rotate(-40 10 460)"/>
-    <ellipse cx="26" cy="620" rx="11" ry="5" transform="rotate(15 26 620)"/>
-  </g>
-</svg>'''
+def forest_scene():
+    """Scène de forêt pour l'ouverture : plusieurs plans d'arbres qui poussent en cascade, dense et immersive."""
+    back = [(20,1.3,"acacia"),(160,1.1,"round"),(300,1.5,"acacia"),(460,1.2,"round"),
+            (620,1.4,"baobab"),(780,1.15,"acacia"),(940,1.35,"round"),(1100,1.25,"acacia"),
+            (1260,1.45,"round"),(1420,1.2,"acacia"),(1560,1.3,"round"),(1700,1.15,"acacia"),
+            (1830,1.35,"round")]
+    mid  = [(80,2.0,"round"),(260,2.4,"acacia"),(480,1.9,"baobab"),(720,2.2,"acacia"),
+            (940,2.5,"round"),(1160,2.0,"baobab"),(1380,2.3,"acacia"),(1560,1.95,"round"),
+            (1750,2.2,"acacia")]
+    front= [(0,3.4,"round"),(200,3.9,"acacia"),(430,3.2,"baobab"),(720,3.7,"round"),
+            (1000,3.0,"acacia"),(1260,3.8,"baobab"),(1480,3.3,"round"),(1700,3.6,"acacia"),
+            (1860,3.1,"round")]
 
-def growth_rail():
+    def layer(trees, base_y, color, opacity, start_delay, step, klass):
+        out = f'<svg class="forest-layer {klass}" viewBox="0 0 1800 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">'
+        for i,(x,s,kind) in enumerate(trees):
+            out += _tree(x, base_y, s, kind, color, opacity, start_delay + i*step)
+        out += '</svg>'
+        return out
+
+    return f'''<div id="intro-forest" aria-hidden="true">
+    {layer(back, 830, "var(--moss-light)", .55, 0.0, .04, "back")}
+    {layer(mid, 860, "var(--moss)", .8, .22, .05, "mid")}
+    {layer(front, 900, "var(--forest-deep)", .97, .48, .06, "front")}
+    <div class="forest-ground"></div>
+    <div class="forest-vignette"></div>
+  </div>'''
+
+def scroll_plant():
+    """La plante-témoin : grandit avec la progression de la page, rétrécit si l'on remonte."""
     return '''<div id="growth-rail" aria-hidden="true">
     <svg viewBox="0 0 34 800" preserveAspectRatio="none">
-      <path class="rail-stem" d="M17 0 C24 100 10 200 20 300 C28 380 8 460 20 560 C28 640 10 720 17 800"/>
-      <path id="rail-progress" d="M17 0 C24 100 10 200 20 300 C28 380 8 460 20 560 C28 640 10 720 17 800" fill="none" stroke="#A7C25C" stroke-width="3"/>
+      <path class="rail-stem" d="M17 800 C24 700 10 600 20 500 C28 420 8 340 20 260 C28 180 10 100 17 0"/>
+      <path id="rail-progress" d="M17 800 C24 700 10 600 20 500 C28 420 8 340 20 260 C28 180 10 100 17 0" fill="none" stroke="#A7C25C" stroke-width="3"/>
+      <g class="rail-leaf" data-at="0.12" style="transform-origin:20px 620px;"><ellipse cx="20" cy="620" rx="11" ry="5.5" fill="#A7C25C" transform="rotate(28 20 620)"/></g>
+      <g class="rail-leaf" data-at="0.22" style="transform-origin:14px 560px;"><ellipse cx="14" cy="560" rx="10" ry="5" fill="#8FB868" transform="rotate(-30 14 560)"/></g>
+      <g class="rail-leaf" data-at="0.35" style="transform-origin:24px 470px;"><ellipse cx="24" cy="470" rx="12" ry="6" fill="#A7C25C" transform="rotate(24 24 470)"/></g>
+      <g class="rail-leaf" data-at="0.48" style="transform-origin:10px 380px;"><ellipse cx="10" cy="380" rx="11" ry="5.5" fill="#8FB868" transform="rotate(-26 10 380)"/></g>
+      <g class="rail-leaf" data-at="0.6" style="transform-origin:26px 290px;"><ellipse cx="26" cy="290" rx="12" ry="6" fill="#A7C25C" transform="rotate(30 26 290)"/></g>
+      <g class="rail-leaf" data-at="0.72" style="transform-origin:8px 190px;"><ellipse cx="8" cy="190" rx="11" ry="5.5" fill="#8FB868" transform="rotate(-24 8 190)"/></g>
+      <g class="rail-leaf" data-at="0.84" style="transform-origin:24px 100px;"><ellipse cx="24" cy="100" rx="12" ry="6" fill="#A7C25C" transform="rotate(26 24 100)"/></g>
+      <g class="rail-flower" data-at="0.94" style="transform-origin:17px 22px;">
+        <g fill="#D89467">
+          <ellipse cx="17" cy="10" rx="6" ry="8"/><ellipse cx="17" cy="10" rx="6" ry="8" transform="rotate(72 17 10)"/>
+          <ellipse cx="17" cy="10" rx="6" ry="8" transform="rotate(144 17 10)"/><ellipse cx="17" cy="10" rx="6" ry="8" transform="rotate(216 17 10)"/>
+          <ellipse cx="17" cy="10" rx="6" ry="8" transform="rotate(288 17 10)"/>
+        </g>
+        <circle cx="17" cy="10" r="4" fill="#EEE6D3"/>
+      </g>
     </svg>
   </div>'''
+
+# alias conservé pour compatibilité
+def growth_rail():
+    return scroll_plant()
 
 def watering_can_icon():
     return '''<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10h9l4-3h4l1 2-4 2v3a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"/><path d="M12 10V7M20 9l1.5-1.5"/></svg>'''

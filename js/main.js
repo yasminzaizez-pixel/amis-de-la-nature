@@ -30,17 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (a.dataset.page === current) a.classList.add('active');
   });
 
-  /* ---------- INTRO CINÉMATIQUE (page d'accueil uniquement) ---------- */
+  /* ---------- INTRO CINÉMATIQUE : forêt qui pousse, puis le logo (page d'accueil) ---------- */
   const intro = document.getElementById('intro');
   if (intro) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.body.classList.add('intro-active');
     const skipBtn = intro.querySelector('.skip-intro');
-    const vines = intro.querySelectorAll('.intro-vine');
+    const trees = intro.querySelectorAll('.tree');
     const logo = intro.querySelector('#intro-logo');
     const tagline = intro.querySelector('.intro-tagline');
 
     const finishIntro = () => {
-      if (hasGSAP) gsap.killTweensOf([vines, logo, tagline]);
+      if (hasGSAP) gsap.killTweensOf([logo, tagline]);
       intro.style.transition = 'opacity .6s ease';
       intro.style.opacity = '0';
       document.body.classList.remove('intro-active');
@@ -49,26 +50,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (skipBtn) skipBtn.addEventListener('click', finishIntro);
 
-    if (hasGSAP) {
-      const tl = gsap.timeline({ delay: .2, onComplete: () => setTimeout(finishIntro, 1100) });
-      tl.to(vines, { opacity: 1, duration: 1.1, stagger: .15, ease: 'power2.out' })
-        .fromTo(logo, { scale: .3, opacity: 0, rotate: -8 }, { scale: 1, opacity: 1, rotate: 0, duration: 1.1, ease: 'back.out(1.6)' }, '-=.5')
+    if (hasGSAP && !reduceMotion) {
+      // la forêt pousse en cascade (arrière-plan -> premier plan)
+      requestAnimationFrame(() => intro.classList.add('forest-grown'));
+
+      const tl = gsap.timeline({ delay: .95, onComplete: () => setTimeout(finishIntro, 1150) });
+      tl.fromTo(logo, { scale: .3, opacity: 0, rotate: -8 }, { scale: 1, opacity: 1, rotate: 0, duration: 1.15, ease: 'back.out(1.6)' })
         .to(tagline, { opacity: 1, y: 0, duration: .9, ease: 'power2.out' }, '-=.3');
     } else {
       finishIntro();
     }
   }
 
-  /* ---------- VIGNE DE PROGRESSION (fixed left rail) ---------- */
+  /* ---------- PLANTE DE PROGRESSION : grandit et rétrécit avec le scroll ---------- */
   const railPath = document.getElementById('rail-progress');
   if (railPath) {
     const railLength = railPath.getTotalLength();
     railPath.style.strokeDasharray = railLength;
     railPath.style.strokeDashoffset = railLength;
+    const railMarks = document.querySelectorAll('#growth-rail .rail-leaf, #growth-rail .rail-flower');
     const updateRail = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       const pct = scrollable > 0 ? window.scrollY / scrollable : 0;
       railPath.style.strokeDashoffset = railLength * (1 - pct);
+      railMarks.forEach(mark => {
+        const at = parseFloat(mark.dataset.at);
+        mark.classList.toggle('bloom', pct >= at);
+      });
     };
     updateRail();
     window.addEventListener('scroll', updateRail, { passive: true });

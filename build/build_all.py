@@ -1,6 +1,6 @@
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-from gen import (icon_logo, badge_logo, vine_svg, vine_svg_right, growth_rail,
+from gen import (icon_logo, badge_logo, forest_scene, growth_rail,
                   watering_can_icon, header, footer, scroll_indicator, leaf_field,
                   head, scripts)
 
@@ -78,8 +78,7 @@ def build_index():
 
 <div id="intro">
   <button class="skip-intro">Passer</button>
-  {vine_svg()}
-  {vine_svg_right()}
+  {forest_scene()}
   <div id="intro-logo" style="color:#EEE6D3; width:min(62vw,380px);">{badge_logo("intrologo")}</div>
   <p class="intro-tagline">« Un peuple sans forêt est un peuple qui meurt »</p>
 </div>
