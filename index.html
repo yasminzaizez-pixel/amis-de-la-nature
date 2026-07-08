@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil — Les Amis de la Nature</title>
+<meta name="description" content="Pépinière, aménagement paysager et sensibilisation environnementale — Les Amis de la Nature, Bamako.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="accueil">
+
+<div id="leaf-field" aria-hidden="true"></div>
+<div id="growth-rail" aria-hidden="true">
+    <svg viewBox="0 0 34 800" preserveAspectRatio="none">
+      <path class="rail-stem" d="M17 0 C24 100 10 200 20 300 C28 380 8 460 20 560 C28 640 10 720 17 800"/>
+      <path id="rail-progress" d="M17 0 C24 100 10 200 20 300 C28 380 8 460 20 560 C28 640 10 720 17 800" fill="none" stroke="#A7C25C" stroke-width="3"/>
+    </svg>
+  </div>
+
+<div id="intro">
+  <button class="skip-intro">Passer</button>
+  <svg class="intro-vine left" viewBox="0 0 120 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 0 C40 100 -10 200 20 300 C45 380 0 460 25 560 C45 640 5 720 20 800" stroke="#3E6B4C" stroke-width="3" fill="none" opacity=".7"/>
+  <g fill="#A7C25C" opacity=".85">
+    <ellipse cx="18" cy="120" rx="10" ry="5" transform="rotate(30 18 120)"/>
+    <ellipse cx="24" cy="260" rx="12" ry="6" transform="rotate(-20 24 260)"/>
+    <ellipse cx="10" cy="420" rx="10" ry="5" transform="rotate(40 10 420)"/>
+    <ellipse cx="26" cy="600" rx="11" ry="5" transform="rotate(-15 26 600)"/>
+    <ellipse cx="14" cy="740" rx="10" ry="5" transform="rotate(25 14 740)"/>
+  </g>
+</svg>
+  <svg class="intro-vine right" viewBox="0 0 120 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 0 C40 100 -10 200 20 300 C45 380 0 460 25 560 C45 640 5 720 20 800" stroke="#3E6B4C" stroke-width="3" fill="none" opacity=".7"/>
+  <g fill="#A7C25C" opacity=".85">
+    <ellipse cx="18" cy="150" rx="10" ry="5" transform="rotate(-30 18 150)"/>
+    <ellipse cx="24" cy="300" rx="12" ry="6" transform="rotate(20 24 300)"/>
+    <ellipse cx="10" cy="460" rx="10" ry="5" transform="rotate(-40 10 460)"/>
+    <ellipse cx="26" cy="620" rx="11" ry="5" transform="rotate(15 26 620)"/>
+  </g>
+</svg>
+  <div id="intro-logo" style="color:#EEE6D3; width:min(62vw,380px);"><svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" id="intrologo">
+  <defs>
+    <path id="intrologo-arctop" d="M 34,124 A 90,90 0 0 1 206,124" fill="none"/>
+  </defs>
+  <circle cx="120" cy="124" r="108" fill="none" stroke="currentColor" stroke-width="2.6" opacity=".9"/>
+  <circle cx="120" cy="124" r="97" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
+  <path d="M30 124l2 4.4 4.8.6-3.5 3.4.8 4.8-4.1-2.3-4.1 2.3.8-4.8-3.5-3.4 4.8-.6z" fill="currentColor" opacity=".85" transform="translate(3 0)"/>
+  <path d="M30 124l2 4.4 4.8.6-3.5 3.4.8 4.8-4.1-2.3-4.1 2.3.8-4.8-3.5-3.4 4.8-.6z" fill="currentColor" opacity=".85" transform="translate(173 0)"/>
+  <path d="M120 78c-15 13-26 29-26 46 0 17 12 27 26 32 14-5 26-15 26-32 0-17-11-33-26-46z" fill="currentColor" opacity=".95"/>
+  <path d="M120 96v58M120 112l-12 10M120 124l12 10M120 136l-10 8" stroke="#0F2318" stroke-width="1.8" fill="none" opacity=".5"/>
+  <text font-family="Fraunces, serif" font-size="14.5" letter-spacing="2.6" fill="currentColor">
+    <textPath href="#intrologo-arctop" startOffset="50%" text-anchor="middle">LES AMIS DE LA NATURE</textPath>
+  </text>
+  <text x="120" y="214" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="1.5" fill="currentColor" text-anchor="middle" font-style="italic" opacity=".85">TOUS POUR L'ARBRE, L'ARBRE POUR LA VIE</text>
+</svg></div>
+  <p class="intro-tagline">« Un peuple sans forêt est un peuple qui meurt »</p>
+</div>
+
+<header class="site-header">
+    <a href="index.html" class="brand">
+      <span style="color:var(--lime)"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2.4" opacity=".85"/>
+  <circle cx="50" cy="50" r="39" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+  <path id="navlogo-star-l" d="M18 50l1.6 3.4 3.7.5-2.7 2.6.6 3.7-3.2-1.8-3.2 1.8.6-3.7-2.7-2.6 3.7-.5z" fill="currentColor" opacity=".8"/>
+  <use href="#navlogo-star-l" x="60"/>
+  <path d="M50 26c-9 8-15 17-15 27 0 10 7 16 15 19 8-3 15-9 15-19 0-10-6-19-15-27z" fill="currentColor" opacity=".9"/>
+  <path d="M50 34v34M50 44l-7 6M50 50l7 6" stroke="var(--forest-deep,#0F2318)" stroke-width="1.4" fill="none" opacity=".55"/>
+</svg></span>
+      <span class="brand-word">Les Amis de <b>la Nature</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-page="accueil">Accueil<span class="leaf-hover"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C7 2 3 6 3 11c0 6 5 9 9 11 4-2 9-5 9-11 0-5-4-9-9-9z"/></svg></span></a>
+<a href="services.html" data-page="services">Services<span class="leaf-hover"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C7 2 3 6 3 11c0 6 5 9 9 11 4-2 9-5 9-11 0-5-4-9-9-9z"/></svg></span></a>
+<a href="realisations.html" data-page="realisations">Réalisations<span class="leaf-hover"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C7 2 3 6 3 11c0 6 5 9 9 11 4-2 9-5 9-11 0-5-4-9-9-9z"/></svg></span></a>
+<a href="pepiniere.html" data-page="pepiniere">Pépinière<span class="leaf-hover"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C7 2 3 6 3 11c0 6 5 9 9 11 4-2 9-5 9-11 0-5-4-9-9-9z"/></svg></span></a>
+<a href="catalogue.html" data-page="catalogue">Catalogue<span class="leaf-hover"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C7 2 3 6 3 11c0 6 5 9 9 11 4-2 9-5 9-11 0-5-4-9-9-9z"/></svg></span></a>
+<a href="contact.html" data-page="contact">Contact<span class="leaf-hover"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C7 2 3 6 3 11c0 6 5 9 9 11 4-2 9-5 9-11 0-5-4-9-9-9z"/></svg></span></a>
+
+    </nav>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+<section class="hero" style="background-image:url('https://images.unsplash.com/photo-1646504550926-15d1b5ac500f?w=1800&q=75&auto=format&fit=crop');">
+  <div class="hero-inner">
+    <span class="eyebrow">Bamako, Mali</span>
+    <h1>Tous pour l'arbre,<br>l'arbre pour la vie.</h1>
+    <p class="lead">Pépinière, aménagement d'espaces verts et sensibilisation environnementale — nous faisons pousser des projets qui durent.</p>
+    <div class="hero-cta">
+      <a href="contact.html" class="btn btn-primary">Nous contacter</a>
+      <a href="services.html" class="btn btn-outline">Découvrir nos services</a>
+    </div>
+  </div>
+</section>
+
+<div class="quote-block">
+  <blockquote>« Un peuple sans forêt<br>est un peuple qui meurt »</blockquote>
+  <cite>Les Amis de la Nature</cite>
+</div>
+
+<section class="section-sand vine-anchor" style="--vine-svg:none;">
+  <div class="wrap">
+    <div class="reveal "><span class="eyebrow">Ce que nous faisons</span><h2 style="margin-top:.4em;">Six métiers, une même racine</h2></div>
+    <div class="services-grid" style="margin-top:2.4em;">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21V10M12 10C12 6 9 4 5 4c0 4 2 7 7 6zM12 10c0-4 3-6 7-6 0 4-2 7-7 6z"/></svg></div>
+        <h3>Production de Plants</h3>
+        <p>Pépinière de plants forestiers, fruitiers et ornementaux, du semis à la mise en terre — adaptés au climat sahélien.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20c8 0 14-6 15-15-8 1-14 6-15 15zM4 20c1-4 3-6 6-8"/></svg></div>
+        <h3>Aménagement et Entretien des Espaces Verts</h3>
+        <p>Conception, plantation et entretien durable de jardins, parcs et espaces publics ou privés.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c4 5 7 8.5 7 12a7 7 0 1 1-14 0c0-3.5 3-7 7-12z"/></svg></div>
+        <h3>Assainissement</h3>
+        <p>Interventions de nettoyage, gestion des déchets verts et amélioration du cadre de vie.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5c3-1 6-1 8 0v15c-2-1-5-1-8 0zM20 5c-3-1-6-1-8 0v15c2-1 5-1 8 0z"/></svg></div>
+        <h3>Formation - Conseil</h3>
+        <p>Accompagnement technique et formations pratiques en horticulture et gestion des espaces verts.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10v4l4 1 9 4V5L7 9z"/><path d="M16 9v6"/></svg></div>
+        <h3>Vulgarisation - Sensibilisation</h3>
+        <p>Actions de sensibilisation en protection de l'environnement auprès des communautés et écoles.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21V13M12 13C7 13 5 10 5 6c5 0 7 3 7 7zM12 13c0-4 2-7 7-7 0 4-2 7-7 7z"/></svg></div>
+        <h3>Maraîchage</h3>
+        <p>Appui à la production maraîchère : techniques culturales, semences et suivi des parcelles.</p>
+      </div>
+    </div>
+    <div style="margin-top:3em; text-align:center;">
+      <a href="services.html" class="btn btn-outline dark">Voir tous les services</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-moss">
+  <div class="wrap origin-split">
+    <div class="reveal "><img src="assets/panneau-origine.jpg" alt="Panneau Les Amis de la Nature" loading="lazy"></div>
+    <div>
+      <div class="reveal "><span class="eyebrow">Notre origine</span><h2 style="color:var(--cream); margin-top:.4em;">Une petite pépinière, une grande conviction</h2><p style="color:var(--sand); margin-top:1em;">Depuis notre panneau planté au bord de la route jusqu’à aujourd’hui, notre conviction n’a pas changé : chaque arbre planté est un pas vers un Mali plus vert. Nous accompagnons familles, entreprises et collectivités dans la production de plants, l’aménagement paysager et la sensibilisation à la protection de l’environnement.</p><a href="pepiniere.html" class="btn btn-outline" style="margin-top:1.4em; border-color:var(--lime); color:var(--lime);">Visiter la pépinière</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sand-deep">
+  <div class="wrap" style="text-align:center;">
+    <div class="reveal "><span class="eyebrow" style="justify-content:center;">Nos réalisations</span><h2 style="margin-top:.4em;">Des projets qui prennent racine</h2></div>
+  </div>
+  <div class="wrap gallery-grid" style="margin-top:2.6em;">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1770234848941-8bd67b57d700?w=1200&q=75&auto=format&fit=crop" alt="Jardin aménagé" loading="lazy"><div class="gallery-overlay"><span class="tag">Aménagement</span><h4>Jardin résidentiel, Bamako</h4></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1713371765638-8cf84d350b74?w=1200&q=75&auto=format&fit=crop" alt="Espace vert paysager" loading="lazy"><div class="gallery-overlay"><span class="tag">Paysagisme</span><h4>Espace vert d'entreprise</h4></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1758414335865-17baa986b85b?w=1200&q=75&auto=format&fit=crop" alt="Allée fleurie" loading="lazy"><div class="gallery-overlay"><span class="tag">Aménagement</span><h4>Allée et massifs fleuris</h4></div></div>
+  </div>
+  <div style="text-align:center; margin-top:2.6em;">
+    <a href="realisations.html" class="btn btn-outline dark">Voir toutes les réalisations</a>
+  </div>
+</section>
+
+<section class="section-dark" style="text-align:center;">
+  <div class="wrap" style="max-width:640px; margin:0 auto;">
+    <div class="reveal "><h2>Prêt à planter votre prochain projet ?</h2><p style="color:var(--sand); margin-top:1em;">Parlons de votre terrain, de votre jardin ou de votre projet d\’espace vert.</p><div style="margin-top:1.6em;"><a href="contact.html" class="btn btn-primary">Demander un devis</a></div></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h5>Les Amis de la Nature</h5>
+        <p style="color:var(--sand-deep); font-size:.9rem; max-width:320px;">Pépinière, aménagement paysager et sensibilisation environnementale à Bamako. « Tous pour l'arbre, l'arbre pour la vie. »</p>
+      </div>
+      <div>
+        <h5>Navigation</h5>
+        <a href="services.html">Nos services</a>
+        <a href="realisations.html">Nos réalisations</a>
+        <a href="pepiniere.html">Pépinière</a>
+        <a href="catalogue.html">Catalogue espèces</a>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="services.html">Production de plants</a>
+        <a href="services.html">Aménagement d'espaces verts</a>
+        <a href="services.html">Assainissement</a>
+        <a href="services.html">Formation - Conseil</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="tel:+22320208207">20 20 82 07</a>
+        <a href="tel:+22366656534">66 65 65 34</a>
+        <a href="mailto:paulbernadette@gmail.com">paulbernadette@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Les Amis de la Nature — Bamako, Mali</span>
+      <span>« Un peuple sans forêt est un peuple qui meurt »</span>
+    </div>
+  </footer>
+<div class="scroll-indicator" title="Retour en haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10h9l4-3h4l1 2-4 2v3a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"/><path d="M12 10V7M20 9l1.5-1.5"/></svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
